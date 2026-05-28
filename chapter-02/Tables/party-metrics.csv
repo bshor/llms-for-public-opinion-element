@@ -1,4 +1,4 @@
 party,n_respondents,accuracy,pre
-Democrat,34,0.682,0.217
-Independent,35,0.663,0.318
-Republican,31,0.639,0.248
+Independent,35,0.7,0.393
+Democrat,34,0.676,0.203
+Republican,31,0.655,0.282

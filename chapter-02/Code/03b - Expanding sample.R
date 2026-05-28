@@ -3,7 +3,8 @@ sink("Output/03b-output.txt")
 n_target <- 100                    # Target sample size
 
 # Load existing results
-all_results <- readRDS("Processed/cloud-all_results.rds")
+f_all <- results_path("all_results.rds")
+all_results <- if (file.exists(f_all)) readRDS(f_all) else list()
 
 existing_ids <- seq_along(all_results)  # Indices of existing results
 missing_ids <- setdiff(1:n_target, existing_ids)
@@ -14,7 +15,7 @@ cat("Querying:", paste(missing_ids, collapse = ", "), "\n")
 tic()
 for (resp_id in missing_ids) {    # Loop over missing respondents only
     chat <- chat_openai(
-      model = "gpt-5.4-nano",
+      model = cloud_model,
       system_prompt = build_prompt(resp_id),
       echo = "none"
     )
@@ -33,12 +34,12 @@ for (resp_id in missing_ids) {    # Loop over missing respondents only
 }
 toc()
 
-saveRDS(all_results, "Processed/cloud-all_results.rds") # Save expanded list
+saveRDS(all_results, results_path("all_results.rds")) # Save expanded list
 
-all_results <- readRDS("Processed/cloud-all_results.rds")
+all_results <- readRDS(results_path("all_results.rds"))
 combined_results <- build_combined(all_results)
 
-save(combined_results, file = "Processed/cloud-combined_results.Rdata")
+save(combined_results, file = results_path("combined_results.Rdata"))
 
 combined_results %>%
   select(caseid, respondent, issue, real_response, llm_response, match, confidence) %>%

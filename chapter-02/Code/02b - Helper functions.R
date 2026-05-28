@@ -26,11 +26,9 @@ calc_pre <- function(real_response, match) {
   (e_baseline - e_model) / e_baseline
 }
 
-# Load combined results (respects use_local global)
+# Load combined results for the current run (respects run_tag global)
 load_combined <- function() {
-  f <- ifelse(use_local, "Processed/local-combined_results.Rdata",
-                         "Processed/cloud-combined_results.Rdata")
-  load(f, envir = parent.frame())
+  load(results_path("combined_results.Rdata"), envir = parent.frame())
 }
 
 # Build combined results with party ID

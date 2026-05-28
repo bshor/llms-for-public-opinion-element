@@ -1,0 +1,13 @@
+# A tibble: 2 × 3
+  confidence     n percent
+  <fct>      <int>   <dbl>
+1 High         676    67.6
+2 Medium       324    32.4
+# A tibble: 3 × 4
+  level          n accuracy    pre
+  <chr>      <int>    <dbl>  <dbl>
+1 All         1000    0.662 0.265 
+2 High         676    0.700 0.360 
+3 Medium/Low   324    0.583 0.0559
+[1] "Accuracy by confidence level:"
+High vs Medium/Low improvement: +11.6 percentage points (accuracy), +0.304 (PRE)

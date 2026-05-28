@@ -8,8 +8,20 @@ library(tictoc)
 library(broom)
 library(pscl)
 
+# Model used for cloud (OpenAI) silicon sampling
+cloud_model <- "gpt-5.4-mini"
+
 # Use local (Ollama) or cloud (OpenAI) results?
 use_local <- FALSE
+
+# Tag identifying this run's saved results, so different models do not
+# overwrite each other's files in Processed/ (e.g. gpt-5.4-mini-...).
+run_tag <- if (use_local) "local" else cloud_model
+
+# Path to a Processed/ results file for the current run
+results_path <- function(name) {
+  file.path("Processed", paste0(run_tag, "-", name))
+}
 
 # Create output directories
 walk(c("Output", "Processed", "Plots", "Tables"), dir.create, showWarnings = FALSE)

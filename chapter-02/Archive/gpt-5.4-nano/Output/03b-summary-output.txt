@@ -1,0 +1,5 @@
+Total queries: 1000
+Total input tokens: 212900
+Total output tokens: 68847
+Total cost: $0.43
+

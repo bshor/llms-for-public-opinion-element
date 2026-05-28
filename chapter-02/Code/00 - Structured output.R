@@ -19,7 +19,7 @@ survey_response_schema <- type_object(
 
 # Create chat object with persona as system prompt
 chat <- chat_openai(
-  model = "gpt-5.4-nano",
+  model = cloud_model,
   system_prompt = persona,
   echo = "none"
 )

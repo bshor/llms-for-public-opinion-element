@@ -5,7 +5,7 @@ all_results <- list()
 tic()
 for (resp_id in 1:10) {           # Loop over 10 respondents
   chat <- chat_openai(
-    model = "gpt-5.4-nano",
+    model = cloud_model,
     system_prompt = build_prompt(resp_id),
     echo = "none"
   )
@@ -24,7 +24,7 @@ for (resp_id in 1:10) {           # Loop over 10 respondents
 }
 toc()
 
-saveRDS(all_results, "Processed/cloud-all_results.rds")   # Save list to disk
+saveRDS(all_results, results_path("all_results.rds"))   # Save list to disk
 
 combined_results <- bind_rows(all_results)
 

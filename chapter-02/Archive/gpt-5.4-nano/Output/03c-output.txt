@@ -1,0 +1,24 @@
+Model: granite3.2:8b-instruct-q4_K_M 
+Found: 100 existing, 0 to query
+0.004 sec elapsed
+# A tibble: 15 × 7
+       caseid respondent issue real_response llm_response match     confidence
+        <dbl>      <int> <chr> <chr>         <chr>        <chr>     <fct>     
+ 1 1645455453         82 320c  Oppose        Support      Incorrect High      
+ 2 1645958677         93 321e  Support       Support      Correct   High      
+ 3 1635282235         16 321a  Oppose        Oppose       Correct   High      
+ 4 1641875753         47 320e  Support       Oppose       Incorrect High      
+ 5 1638704467         31 320c  Oppose        Support      Incorrect High      
+ 6 1644661209         78 321b  Oppose        Oppose       Correct   High      
+ 7 1636887235         20 320a  Support       Oppose       Incorrect High      
+ 8 1644661209         78 321c  Support       Oppose       Incorrect High      
+ 9 1643989851         52 321e  Support       Support      Correct   High      
+10 1643989851         52 321a  Oppose        Oppose       Correct   High      
+11 1644509083         73 320d  Support       Support      Correct   High      
+12 1644590277         76 320d  Support       Oppose       Incorrect High      
+13 1644107137         60 321e  Support       Support      Correct   High      
+14 1629319233          4 320a  Support       Support      Correct   High      
+15 1637650201         25 320a  Support       Support      Correct   High      
+Total queries: 1000
+Total input tokens: 167270
+Total output tokens: 161949

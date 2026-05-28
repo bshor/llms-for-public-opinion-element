@@ -1,17 +1,17 @@
 # A tibble: 2 × 4
   source Democrat Independent Republican
   <chr>     <dbl>       <dbl>      <dbl>
-1 human    -0.216    -0.00346      0.539
-2 llm      -1.26     -0.0143       1.01 
+1 human    -0.216    -0.00654      0.428
+2 llm      -1.26      0.118        1.07 
 # A tibble: 2 × 5
   source Democrat Independent Republican polarization
   <chr>     <dbl>       <dbl>      <dbl>        <dbl>
-1 human    -0.216    -0.00346      0.539        0.755
-2 llm      -1.26     -0.0143       1.01         2.27 
-wrote 1.00TB in  0s, 123.36PB/s                                                                                         # A tibble: 4 × 4
+1 human    -0.216    -0.00654      0.428        0.644
+2 llm      -1.26      0.118        1.07         2.33 
+# A tibble: 4 × 4
   metric            human    llm change_pct
   <chr>             <dbl>  <dbl>      <dbl>
-1 Democrat         -0.216 -1.26        -482
-2 Independent      -0.003 -0.014       -312
-3 Republican        0.539  1.01          88
-4 R-D Polarization  0.755  2.27         201
+1 Democrat         -0.216 -1.26        -484
+2 Independent      -0.007  0.118       1905
+3 Republican        0.428  1.07         150
+4 R-D Polarization  0.644  2.33         262

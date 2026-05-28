@@ -1,0 +1,6 @@
+wrote 1.00TB in  0s, 167.77PB/s                                                                                         # A tibble: 3 × 4
+  party       n_respondents accuracy   pre
+  <chr>               <int>    <dbl> <dbl>
+1 Democrat               34    0.682 0.217
+2 Independent            35    0.663 0.318
+3 Republican             31    0.639 0.248

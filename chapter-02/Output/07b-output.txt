@@ -1,26 +1,26 @@
 # A tibble: 22 × 3
    subgroup                                  n   mae
    <chr>                                 <int> <dbl>
- 1 All respondents                         100 0.164
- 2 Independent                              35 0.189
+ 1 All respondents                         100 0.166
+ 2 Independent                              35 0.186
  3 Democrat                                 34 0.288
- 4 Republican                               31 0.252
- 5 White Republican                         30 0.253
- 6 Female Democrat                          26 0.288
- 7 White Independent                        26 0.188
- 8 Female Independent                       20 0.16 
+ 4 Republican                               31 0.281
+ 5 White Republican                         30 0.293
+ 6 Female Democrat                          26 0.292
+ 7 White Independent                        26 0.185
+ 8 Female Independent                       20 0.175
  9 White Democrat                           20 0.235
-10 Female Republican                        19 0.232
-11 Male Independent                         15 0.227
-12 Male Republican                          12 0.283
-13 Black or African-American Democrat        7 0.414
+10 Female Republican                        19 0.247
+11 Male Independent                         15 0.267
+12 Male Republican                          12 0.333
+13 Black or African-American Democrat        7 0.429
 14 Male Democrat                             6 0.25 
 15 Black or African-American Independent     5 0.3  
 16 Hispanic or Latino Democrat               4 0.225
-17 Asian or Asian-American Independent       3 0.333
-18 Non-binary Democrat                       2 0.4  
+17 Asian or Asian-American Independent       3 0.2  
+18 Non-binary Democrat                       2 0.45 
 19 Asian or Asian-American Democrat          2 0.4  
 20 Hispanic or Latino Independent            1 0.4  
-21 Native American Democrat                  1 0.5  
-22 Asian or Asian-American Republican        1 0.2  
+21 Native American Democrat                  1 0.6  
+22 Asian or Asian-American Republican        1 0.5  
 Plot saved to Plots/07b-rare-profiles.png

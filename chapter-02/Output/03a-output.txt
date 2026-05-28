@@ -1,24 +1,24 @@
-26.158 sec elapsed
+31.971 sec elapsed
 # A tibble: 15 × 7
        caseid respondent issue real_response llm_response match     confidence
         <dbl>      <int> <chr> <chr>         <chr>        <chr>     <fct>     
- 1 1632441081          5 320c  Oppose        Support      Incorrect Medium    
- 2 1632441081          5 320d  Support       Oppose       Incorrect Medium    
- 3 1629319233          4 320d  Support       Support      Correct   High      
- 4 1633330823          9 320a  Oppose        Support      Incorrect Medium    
- 5 1623028743          3 321d  Oppose        Oppose       Correct   High      
- 6 1633377017         10 320d  Oppose        Oppose       Correct   High      
- 7 1623028743          3 320c  Oppose        Oppose       Correct   Medium    
- 8 1629319233          4 320e  Support       Support      Correct   Medium    
- 9 1619544083          2 321a  Oppose        Support      Incorrect Medium    
-10 1633366865          7 321d  Oppose        Oppose       Correct   Medium    
-11 1622914939          1 320d  Support       Support      Correct   High      
-12 1623028743          3 320e  Support       Oppose       Incorrect Medium    
-13 1632441081          5 321c  Support       Support      Correct   Medium    
-14 1619544083          2 320c  Oppose        Oppose       Correct   Medium    
-15 1633330823          9 321e  Oppose        Support      Incorrect High      
+ 1 1629319233          4 321d  Oppose        Support      Incorrect High      
+ 2 1629319233          4 321a  Support       Support      Correct   High      
+ 3 1623028743          3 320c  Oppose        Oppose       Correct   High      
+ 4 1633366865          7 320e  Support       Support      Correct   High      
+ 5 1629319233          4 321c  Support       Oppose       Incorrect High      
+ 6 1632357149          6 321d  Oppose        Oppose       Correct   High      
+ 7 1632441081          5 321b  Support       Support      Correct   High      
+ 8 1633330823          9 321d  Oppose        Oppose       Correct   High      
+ 9 1633330823          9 321a  Support       Support      Correct   High      
+10 1633366865          7 320c  Oppose        Oppose       Correct   High      
+11 1633377031          8 320c  Support       Oppose       Incorrect Medium    
+12 1619544083          2 321e  Support       Support      Correct   High      
+13 1623028743          3 320e  Support       Support      Correct   High      
+14 1622914939          1 321e  Support       Support      Correct   High      
+15 1633377017         10 320e  Support       Support      Correct   High      
 Total queries: 100
 Total input tokens: 21770
-Total output tokens: 7385
-Total cost: $0.01
+Total output tokens: 6869
+Total cost: $0.05
 
