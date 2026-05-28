@@ -1,0 +1,1 @@
+Plot saved to Plots/09-ideal-points.png

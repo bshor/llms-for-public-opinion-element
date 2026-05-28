@@ -1,0 +1,15 @@
+# RStudio
+.Rproj.user/
+*.Rproj
+.Rhistory
+.RData
+
+# LaTeX (manuscript lives in Overleaf, not here)
+*.tex
+*.log
+
+
+# Local planning and assistant files
+PLAN.md
+.Rproj.user
+.positai

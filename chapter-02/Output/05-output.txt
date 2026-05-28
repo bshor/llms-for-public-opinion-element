@@ -1,0 +1,16 @@
+# A tibble: 10 × 4
+   issue llm_support real_support absolute_error
+   <chr>       <dbl>        <dbl>          <dbl>
+ 1 320a         0.51         0.54         0.0300
+ 2 320b         0.04         0.48         0.44  
+ 3 320c         0.5          0.41         0.09  
+ 4 320d         0.89         0.69         0.2   
+ 5 320e         0.48         0.63         0.15  
+ 6 321a         0.65         0.69         0.0400
+ 7 321b         0.46         0.33         0.13  
+ 8 321c         0.41         0.69         0.28  
+ 9 321d         0.11         0.18         0.07  
+10 321e         0.97         0.76         0.21  
+Mean Absolute Error: 0.164
+
+Plot saved to Plots/05-plot.png

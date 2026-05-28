@@ -1,0 +1,14 @@
+ideal: analysis of roll call data via Markov chain Monte Carlo methods.
+
+Ideal Point Estimation
+
+Number of Legislators		 200 
+Number of Items			 10 
+
+found user-supplied list in startvals
+starvals is a list containing:
+[1] "x"
+
+Starting MCMC Iterations...
+
+Ideal points estimated and saved.
