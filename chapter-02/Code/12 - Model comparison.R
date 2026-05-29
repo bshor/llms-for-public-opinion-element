@@ -1,8 +1,6 @@
 # 12 - Model comparison.R
-# Compare silicon sampling results across model runs stored in Processed/.
-# Computes overall accuracy and PRE, per-issue PRE, per-party accuracy and PRE,
-# polarization inflation from ideal points, and regression coefficient
-# comparison for every tagged results file found in Processed/.
+# Compare all model runs in Processed/: overall and per-issue/per-party accuracy
+# and PRE, polarization inflation, and regression coefficients.
 
 source("Code/01 - Setup.R")
 source("Code/02b - Helper functions.R")

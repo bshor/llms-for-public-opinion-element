@@ -1,7 +1,6 @@
 # sanitize_outputs.R
-# Replace non-ASCII characters in Output/*.txt with ASCII equivalents.
-# Run this after any pipeline execution to keep output files LaTeX-safe.
-# LLM responses often contain curly quotes, em dashes, etc.
+# Replace non-ASCII characters (curly quotes, em dashes) in Output/*.txt with
+# ASCII equivalents so the files are LaTeX-safe. Run after any pipeline execution.
 
 replacements <- list(
   "’" = "'",   # right single quotation mark

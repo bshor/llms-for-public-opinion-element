@@ -6,7 +6,7 @@ i <- 42                          # Select respondent from CCES
 system_prompt <- build_prompt(i) # Build demographic prompt
 
 chat <- chat_openai(             # Initialize chat with system prompt
-  model = cloud_model,
+  model = active_model,
   system_prompt = system_prompt,
   echo = "none"
 )

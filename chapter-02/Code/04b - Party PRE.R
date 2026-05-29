@@ -2,8 +2,7 @@ sink("Output/04b-output.txt")
 
 load_combined()  # Loads combined_results
 
-# Party-specific majority baseline: for each issue, the majority opinion
-# within each party. If you just knew someone's party, this is your best guess.
+# Party-specific majority baseline: the modal opinion within each party, per issue
 party_majority <- combined_results %>%
   group_by(pid_text, issue) %>%
   summarize(

@@ -15,7 +15,7 @@ cat("Querying:", paste(missing_ids, collapse = ", "), "\n")
 tic()
 for (resp_id in missing_ids) {    # Loop over missing respondents only
     chat <- chat_openai(
-      model = cloud_model,
+      model = active_model,
       system_prompt = build_prompt(resp_id),
       echo = "none"
     )

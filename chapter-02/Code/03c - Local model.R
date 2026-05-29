@@ -1,9 +1,13 @@
-# Optional: Run the same pipeline with a local model via Ollama.
-# Set ollama_model in 01 - Setup.R and use_local <- TRUE before sourcing.
-# Requires: Ollama running locally with the target model already pulled.
+# Optional: run the pipeline with a local model via Ollama.
+# Requires Ollama running locally with the model already pulled.
 
 source("Code/01 - Setup.R")
 source("Code/02b - Helper functions.R")
+
+# Override the cloud default with a local Ollama model, then re-derive the tag
+active_model <- "llama3.1:8b-instruct-q4_K_M"
+use_local <- grepl(":", active_model)
+run_tag <- gsub(":", "-", active_model)
 
 sink(paste0("Output/03c-", run_tag, "-output.txt"))
 
@@ -15,13 +19,13 @@ all_results <- if (file.exists(f_all)) readRDS(f_all) else list()
 
 existing_ids <- seq_along(all_results)
 missing_ids <- setdiff(1:n_target, existing_ids)
-cat("Model:", ollama_model, "\n")
+cat("Model:", active_model, "\n")
 cat("Found:", length(existing_ids), "existing,", length(missing_ids), "to query\n")
 
 tic()
 for (resp_id in missing_ids) {
   chat <- chat_ollama(
-    model = ollama_model,
+    model = active_model,
     system_prompt = build_prompt(resp_id),
     echo = "none"
   )

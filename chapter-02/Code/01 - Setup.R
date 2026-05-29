@@ -8,18 +8,15 @@ library(tictoc)
 library(broom)
 library(pscl)
 
-# Model used for cloud (OpenAI) silicon sampling
-cloud_model <- "gpt-5.4-mini"
+# Model for this run. Defaults to a cloud (OpenAI) model; 03c overrides it with
+# a local Ollama model. The backend is inferred from the name below.
+active_model <- "gpt-5.4-mini"
 
-# Model used for local (Ollama) silicon sampling
-ollama_model <- "llama3.1:8b-instruct-q4_K_M"
+# Ollama (local) model names contain a colon; OpenAI (cloud) names do not
+use_local <- grepl(":", active_model)
 
-# Use local (Ollama) or cloud (OpenAI) results?
-use_local <- FALSE
-
-# Tag identifying this run's saved results — colons replaced so filenames
-# are valid on all platforms (e.g. gpt-5.4-mini-..., granite3.2-8b-...).
-run_tag <- gsub(":", "-", if (use_local) ollama_model else cloud_model)
+# Tag for this run's saved files (colons replaced for valid filenames)
+run_tag <- gsub(":", "-", active_model)
 
 # Path to a Processed/ results file for the current run
 results_path <- function(name) {

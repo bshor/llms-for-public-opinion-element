@@ -5,7 +5,7 @@ all_results <- list()
 tic()
 for (resp_id in 1:10) {           # Loop over 10 respondents
   chat <- chat_openai(
-    model = cloud_model,
+    model = active_model,
     system_prompt = build_prompt(resp_id),
     echo = "none"
   )

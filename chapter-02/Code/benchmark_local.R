@@ -1,21 +1,21 @@
 # benchmark_local.R
 # Time a single respondent × 10 issues against a local Ollama model.
 # Usage:
-#   Rscript Code/benchmark_local.R                     # uses ollama_model from Setup.R
+#   Rscript Code/benchmark_local.R                     # uses active_model from Setup.R
 #   Rscript Code/benchmark_local.R qwen3.5:9b-q4_K_M  # override model
 
 source("Code/01 - Setup.R")
 source("Code/02b - Helper functions.R")
 
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) >= 1) ollama_model <- args[1]
+if (length(args) >= 1) active_model <- args[1]
 
-cat("Model:", ollama_model, "\n")
+cat("Model:", active_model, "\n")
 cat("Respondent: 1\n")
 cat("Issues: 10\n\n")
 
 chat <- chat_ollama(
-  model = ollama_model,
+  model = active_model,
   system_prompt = build_prompt(1),
   echo = "none",
   api_args = list(think = FALSE)
