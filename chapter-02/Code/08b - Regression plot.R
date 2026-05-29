@@ -1,6 +1,6 @@
 sink("Output/08b-output.txt")
 
-load("Processed/regression-coefs.Rdata")  # Loads all_coefs
+load(results_path("regression-coefs.Rdata"))  # Loads all_coefs
 
 # Plot coefficient comparison
 all_coefs %>%

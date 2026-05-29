@@ -11,12 +11,15 @@ library(pscl)
 # Model used for cloud (OpenAI) silicon sampling
 cloud_model <- "gpt-5.4-mini"
 
+# Model used for local (Ollama) silicon sampling
+ollama_model <- "llama3.1:8b-instruct-q4_K_M"
+
 # Use local (Ollama) or cloud (OpenAI) results?
 use_local <- FALSE
 
-# Tag identifying this run's saved results, so different models do not
-# overwrite each other's files in Processed/ (e.g. gpt-5.4-mini-...).
-run_tag <- if (use_local) "local" else cloud_model
+# Tag identifying this run's saved results — colons replaced so filenames
+# are valid on all platforms (e.g. gpt-5.4-mini-..., granite3.2-8b-...).
+run_tag <- gsub(":", "-", if (use_local) ollama_model else cloud_model)
 
 # Path to a Processed/ results file for the current run
 results_path <- function(name) {

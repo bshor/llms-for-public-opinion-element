@@ -1,0 +1,210 @@
+Models found: gemma4-e4b-it-q4_K_M, gpt-5.4-mini, gpt-5.4-nano, granite3.2-8b-instruct-q4_K_M, granite4.1-8b-q4_K_M, llama3.1-8b-instruct-q4_K_M 
+
+=== Overall accuracy and PRE ===
+# A tibble: 6 x 4
+  model                             n accuracy    pre
+  <chr>                         <int>    <dbl>  <dbl>
+1 gemma4-e4b-it-q4_K_M           1000    0.519 -0.048
+2 gpt-5.4-mini                   1000    0.678  0.3  
+3 gpt-5.4-nano                   1000    0.662  0.265
+4 granite3.2-8b-instruct-q4_K_M  1000    0.552  0.026
+5 granite4.1-8b-q4_K_M           1000    0.512 -0.061
+6 llama3.1-8b-instruct-q4_K_M    1000    0.558  0.037
+
+=== PRE by issue ===
+# A tibble: 60 x 3
+   model                         issue    pre
+   <chr>                         <chr>  <dbl>
+ 1 gemma4-e4b-it-q4_K_M          320a  -0.159
+ 2 gpt-5.4-mini                  320a   0.326
+ 3 gpt-5.4-nano                  320a   0.239
+ 4 granite3.2-8b-instruct-q4_K_M 320a   0.13 
+ 5 granite4.1-8b-q4_K_M          320a  -0.065
+ 6 llama3.1-8b-instruct-q4_K_M   320a  -0.13 
+ 7 gemma4-e4b-it-q4_K_M          320b   0.042
+ 8 gpt-5.4-mini                  320b   0.021
+ 9 gpt-5.4-nano                  320b   0    
+10 granite3.2-8b-instruct-q4_K_M 320b  -0.062
+11 granite4.1-8b-q4_K_M          320b  -0.062
+12 llama3.1-8b-instruct-q4_K_M   320b   0.146
+13 gemma4-e4b-it-q4_K_M          320c  -0.195
+14 gpt-5.4-mini                  320c   0.098
+15 gpt-5.4-nano                  320c   0.098
+16 granite3.2-8b-instruct-q4_K_M 320c   0.024
+17 granite4.1-8b-q4_K_M          320c  -0.024
+18 llama3.1-8b-instruct-q4_K_M   320c  -0.244
+19 gemma4-e4b-it-q4_K_M          320d  -0.226
+20 gpt-5.4-mini                  320d   0    
+21 gpt-5.4-nano                  320d   0.032
+22 granite3.2-8b-instruct-q4_K_M 320d  -0.065
+23 granite4.1-8b-q4_K_M          320d  -0.677
+24 llama3.1-8b-instruct-q4_K_M   320d  -0.129
+25 gemma4-e4b-it-q4_K_M          320e  -0.514
+26 gpt-5.4-mini                  320e  -0.135
+27 gpt-5.4-nano                  320e  -0.216
+28 granite3.2-8b-instruct-q4_K_M 320e  -0.216
+29 granite4.1-8b-q4_K_M          320e  -0.595
+30 llama3.1-8b-instruct-q4_K_M   320e  -0.306
+31 gemma4-e4b-it-q4_K_M          321a  -0.839
+32 gpt-5.4-mini                  321a   0.258
+33 gpt-5.4-nano                  321a   0.097
+34 granite3.2-8b-instruct-q4_K_M 321a  -0.548
+35 granite4.1-8b-q4_K_M          321a  -0.839
+36 llama3.1-8b-instruct-q4_K_M   321a  -0.613
+37 gemma4-e4b-it-q4_K_M          321b  -0.273
+38 gpt-5.4-mini                  321b   0.091
+39 gpt-5.4-nano                  321b   0.182
+40 granite3.2-8b-instruct-q4_K_M 321b  -0.424
+41 granite4.1-8b-q4_K_M          321b   0.091
+42 llama3.1-8b-instruct-q4_K_M   321b  -0.091
+43 gemma4-e4b-it-q4_K_M          321c  -0.71 
+44 gpt-5.4-mini                  321c  -0.161
+45 gpt-5.4-nano                  321c  -0.419
+46 granite3.2-8b-instruct-q4_K_M 321c  -0.935
+47 granite4.1-8b-q4_K_M          321c  -1.03 
+48 llama3.1-8b-instruct-q4_K_M   321c  -0.613
+49 gemma4-e4b-it-q4_K_M          321d  -0.889
+50 gpt-5.4-mini                  321d  -0.167
+51 gpt-5.4-nano                  321d  -0.056
+52 granite3.2-8b-instruct-q4_K_M 321d  -1.11 
+53 granite4.1-8b-q4_K_M          321d  -0.333
+54 llama3.1-8b-instruct-q4_K_M   321d  -0.5  
+55 gemma4-e4b-it-q4_K_M          321e  -1.21 
+56 gpt-5.4-mini                  321e   0    
+57 gpt-5.4-nano                  321e  -0.042
+58 granite3.2-8b-instruct-q4_K_M 321e  -0.917
+59 granite4.1-8b-q4_K_M          321e  -1.54 
+60 llama3.1-8b-instruct-q4_K_M   321e  -1.12 
+
+=== Accuracy by party ===
+# A tibble: 18 x 3
+   pid_text    model                         accuracy
+   <chr>       <chr>                            <dbl>
+ 1 Democrat    gemma4-e4b-it-q4_K_M             0.481
+ 2 Democrat    gpt-5.4-mini                     0.676
+ 3 Democrat    gpt-5.4-nano                     0.682
+ 4 Democrat    granite3.2-8b-instruct-q4_K_M    0.538
+ 5 Democrat    granite4.1-8b-q4_K_M             0.524
+ 6 Democrat    llama3.1-8b-instruct-q4_K_M      0.542
+ 7 Independent gemma4-e4b-it-q4_K_M             0.534
+ 8 Independent gpt-5.4-mini                     0.7  
+ 9 Independent gpt-5.4-nano                     0.663
+10 Independent granite3.2-8b-instruct-q4_K_M    0.6  
+11 Independent granite4.1-8b-q4_K_M             0.543
+12 Independent llama3.1-8b-instruct-q4_K_M      0.577
+13 Republican  gemma4-e4b-it-q4_K_M             0.544
+14 Republican  gpt-5.4-mini                     0.655
+15 Republican  gpt-5.4-nano                     0.639
+16 Republican  granite3.2-8b-instruct-q4_K_M    0.513
+17 Republican  granite4.1-8b-q4_K_M             0.465
+18 Republican  llama3.1-8b-instruct-q4_K_M      0.555
+
+=== PRE by party ===
+# A tibble: 18 x 3
+   pid_text    model                            pre
+   <chr>       <chr>                          <dbl>
+ 1 Democrat    gemma4-e4b-it-q4_K_M          -0.275
+ 2 Democrat    gpt-5.4-mini                   0.203
+ 3 Democrat    gpt-5.4-nano                   0.217
+ 4 Democrat    granite3.2-8b-instruct-q4_K_M -0.138
+ 5 Democrat    granite4.1-8b-q4_K_M          -0.174
+ 6 Democrat    llama3.1-8b-instruct-q4_K_M   -0.141
+ 7 Independent gemma4-e4b-it-q4_K_M           0.053
+ 8 Independent gpt-5.4-mini                   0.393
+ 9 Independent gpt-5.4-nano                   0.318
+10 Independent granite3.2-8b-instruct-q4_K_M  0.191
+11 Independent granite4.1-8b-q4_K_M           0.075
+12 Independent llama3.1-8b-instruct-q4_K_M    0.145
+13 Republican  gemma4-e4b-it-q4_K_M           0.047
+14 Republican  gpt-5.4-mini                   0.282
+15 Republican  gpt-5.4-nano                   0.248
+16 Republican  granite3.2-8b-instruct-q4_K_M -0.013
+17 Republican  granite4.1-8b-q4_K_M          -0.114
+18 Republican  llama3.1-8b-instruct-q4_K_M    0.074
+
+=== Polarization inflation (median ideal points by party) ===
+# A tibble: 36 x 4
+   source party       median_ip model                        
+   <chr>  <chr>           <dbl> <chr>                        
+ 1 human  Democrat       -0.984 gemma4-e4b-it-q4_K_M         
+ 2 human  Democrat       -0.215 gpt-5.4-mini                 
+ 3 human  Democrat       -0.216 gpt-5.4-nano                 
+ 4 human  Democrat       -0.874 granite3.2-8b-instruct-q4_K_M
+ 5 human  Democrat       -1.24  granite4.1-8b-q4_K_M         
+ 6 human  Democrat       -0.979 llama3.1-8b-instruct-q4_K_M  
+ 7 human  Independent    -0.392 gemma4-e4b-it-q4_K_M         
+ 8 human  Independent    -0.012 gpt-5.4-mini                 
+ 9 human  Independent    -0.003 gpt-5.4-nano                 
+10 human  Independent    -0.597 granite3.2-8b-instruct-q4_K_M
+11 human  Independent    -0.62  granite4.1-8b-q4_K_M         
+12 human  Independent    -0.453 llama3.1-8b-instruct-q4_K_M  
+13 human  Republican      0.179 gemma4-e4b-it-q4_K_M         
+14 human  Republican      0.406 gpt-5.4-mini                 
+15 human  Republican      0.539 gpt-5.4-nano                 
+16 human  Republican      0.46  granite3.2-8b-instruct-q4_K_M
+17 human  Republican     -0.261 granite4.1-8b-q4_K_M         
+18 human  Republican      0.196 llama3.1-8b-instruct-q4_K_M  
+19 llm    Democrat        0.257 gemma4-e4b-it-q4_K_M         
+20 llm    Democrat       -1.34  gpt-5.4-mini                 
+21 llm    Democrat       -1.26  gpt-5.4-nano                 
+22 llm    Democrat       -0.021 granite3.2-8b-instruct-q4_K_M
+23 llm    Democrat        0.026 granite4.1-8b-q4_K_M         
+24 llm    Democrat        0.042 llama3.1-8b-instruct-q4_K_M  
+25 llm    Independent     0.492 gemma4-e4b-it-q4_K_M         
+26 llm    Independent     0.129 gpt-5.4-mini                 
+27 llm    Independent    -0.014 gpt-5.4-nano                 
+28 llm    Independent     0.175 granite3.2-8b-instruct-q4_K_M
+29 llm    Independent     1.04  granite4.1-8b-q4_K_M         
+30 llm    Independent     0.344 llama3.1-8b-instruct-q4_K_M  
+31 llm    Republican      0.594 gemma4-e4b-it-q4_K_M         
+32 llm    Republican      1.08  gpt-5.4-mini                 
+33 llm    Republican      1.01  gpt-5.4-nano                 
+34 llm    Republican      0.517 granite3.2-8b-instruct-q4_K_M
+35 llm    Republican      1.19  granite4.1-8b-q4_K_M         
+36 llm    Republican      0.644 llama3.1-8b-instruct-q4_K_M  
+
+=== Polarization distance (Republican - Democrat median) ===
+# A tibble: 12 x 3
+   source distance model                        
+   <chr>     <dbl> <chr>                        
+ 1 human     1.16  gemma4-e4b-it-q4_K_M         
+ 2 human     0.621 gpt-5.4-mini                 
+ 3 human     0.755 gpt-5.4-nano                 
+ 4 human     1.33  granite3.2-8b-instruct-q4_K_M
+ 5 human     0.978 granite4.1-8b-q4_K_M         
+ 6 human     1.18  llama3.1-8b-instruct-q4_K_M  
+ 7 llm       0.337 gemma4-e4b-it-q4_K_M         
+ 8 llm       2.42  gpt-5.4-mini                 
+ 9 llm       2.27  gpt-5.4-nano                 
+10 llm       0.538 granite3.2-8b-instruct-q4_K_M
+11 llm       1.17  granite4.1-8b-q4_K_M         
+12 llm       0.601 llama3.1-8b-instruct-q4_K_M  
+
+=== Partisan regression coefficients ===
+# A tibble: 24 x 4
+   source term       mean_estimate model                        
+   <chr>  <chr>              <dbl> <chr>                        
+ 1 CCES   Democrat           0.093 gemma4-e4b-it-q4_K_M         
+ 2 CCES   Democrat           0.093 gpt-5.4-mini                 
+ 3 CCES   Democrat           0.093 gpt-5.4-nano                 
+ 4 CCES   Democrat           0.093 granite3.2-8b-instruct-q4_K_M
+ 5 CCES   Democrat           0.093 granite4.1-8b-q4_K_M         
+ 6 CCES   Democrat           0.093 llama3.1-8b-instruct-q4_K_M  
+ 7 CCES   Republican         0.03  gemma4-e4b-it-q4_K_M         
+ 8 CCES   Republican         0.03  gpt-5.4-mini                 
+ 9 CCES   Republican         0.03  gpt-5.4-nano                 
+10 CCES   Republican         0.03  granite3.2-8b-instruct-q4_K_M
+11 CCES   Republican         0.03  granite4.1-8b-q4_K_M         
+12 CCES   Republican         0.03  llama3.1-8b-instruct-q4_K_M  
+13 LLM    Democrat           0.101 gemma4-e4b-it-q4_K_M         
+14 LLM    Democrat           0.014 gpt-5.4-mini                 
+15 LLM    Democrat           0.038 gpt-5.4-nano                 
+16 LLM    Democrat           0.101 granite3.2-8b-instruct-q4_K_M
+17 LLM    Democrat           0.145 granite4.1-8b-q4_K_M         
+18 LLM    Democrat           0.03  llama3.1-8b-instruct-q4_K_M  
+19 LLM    Republican         0.132 gemma4-e4b-it-q4_K_M         
+20 LLM    Republican        -0.023 gpt-5.4-mini                 
+21 LLM    Republican        -0.015 gpt-5.4-nano                 
+22 LLM    Republican         0.086 granite3.2-8b-instruct-q4_K_M
+23 LLM    Republican         0.027 granite4.1-8b-q4_K_M         
+24 LLM    Republican         0.07  llama3.1-8b-instruct-q4_K_M  

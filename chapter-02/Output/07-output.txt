@@ -1,4 +1,4 @@
-# A tibble: 3 × 4
+# A tibble: 3 x 4
   party       n_respondents accuracy   pre
   <chr>               <int>    <dbl> <dbl>
 1 Independent            35    0.7   0.393

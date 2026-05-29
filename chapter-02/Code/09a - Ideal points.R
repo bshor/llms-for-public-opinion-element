@@ -40,7 +40,7 @@ ideal_points <- respondent_data %>%
   rename(party = pid_text) %>%
   mutate(ideal_point = ideal_model$xbar[, "D1"])
 
-save(ideal_points, file = "Processed/ideal-points.Rdata")
+save(ideal_points, file = results_path("ideal-points.Rdata"))
 
 cat("Ideal points estimated and saved.\n")
 

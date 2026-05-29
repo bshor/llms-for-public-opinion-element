@@ -1,6 +1,6 @@
 sink("Output/11-output.txt")
 
-load("Processed/ideal-points.Rdata")  # Loads ideal_points
+load(results_path("ideal-points.Rdata"))  # Loads ideal_points
 
 # Calculate party medians by source
 party_medians <- ideal_points %>%

@@ -1,4 +1,4 @@
-# A tibble: 22 × 3
+# A tibble: 22 x 3
    subgroup                                  n   mae
    <chr>                                 <int> <dbl>
  1 All respondents                         100 0.166

@@ -18,6 +18,9 @@ annotate_results <- function(results, resp_id, n_issues = 10) {
 
 # Proportionate reduction in error
 calc_pre <- function(real_response, match) {
+  keep <- !is.na(match) & !is.na(real_response)
+  real_response <- real_response[keep]
+  match <- match[keep]
   n <- length(real_response)
   support <- sum(real_response == "Support")
   e_baseline <- min(support, n - support)

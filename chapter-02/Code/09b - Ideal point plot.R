@@ -1,6 +1,6 @@
 sink("Output/09b-output.txt")
 
-load("Processed/ideal-points.Rdata")  # Loads ideal_points
+load(results_path("ideal-points.Rdata"))  # Loads ideal_points
 
 # Visualize ideal point distributions
 ideal_plot <- ideal_points %>%

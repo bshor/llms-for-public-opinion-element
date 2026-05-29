@@ -41,4 +41,4 @@ for (i in 1:n_issues) {
 
 all_coefs <- bind_rows(all_coefs)
 
-save(all_coefs, file = "Processed/regression-coefs.Rdata")
+save(all_coefs, file = results_path("regression-coefs.Rdata"))

@@ -1,5 +1,5 @@
 31.971 sec elapsed
-# A tibble: 15 × 7
+# A tibble: 15 x 7
        caseid respondent issue real_response llm_response match     confidence
         <dbl>      <int> <chr> <chr>         <chr>        <chr>     <fct>     
  1 1629319233          4 321d  Oppose        Support      Incorrect High      

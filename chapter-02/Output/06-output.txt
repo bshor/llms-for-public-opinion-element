@@ -1,9 +1,9 @@
-# A tibble: 2 × 3
+# A tibble: 2 x 3
   confidence     n percent
   <fct>      <int>   <dbl>
 1 High         709    70.9
 2 Medium       291    29.1
-# A tibble: 3 × 4
+# A tibble: 3 x 4
   level          n accuracy   pre
   <chr>      <int>    <dbl> <dbl>
 1 All         1000    0.678 0.3  

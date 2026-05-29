@@ -1,8 +1,8 @@
-# A tibble: 1 × 6
+# A tibble: 1 x 6
       n e_majority e_party e_model   pre party_pre
   <int>      <int>   <int>   <int> <dbl>     <dbl>
 1  1000        460     303     322   0.3    -0.063
-# A tibble: 10 × 4
+# A tibble: 10 x 4
    issue e_party e_model party_pre
    <chr>   <int>   <int>     <dbl>
  1 321a       28      23    0.179 

@@ -1,0 +1,124 @@
+Model: gemma4:e4b-it-q4_K_M 
+Found: 0 existing, 100 to query
+Respondent 1 done
+Respondent 2 done
+Respondent 3 done
+Respondent 4 done
+Respondent 5 done
+Respondent 6 done
+Respondent 7 done
+Respondent 8 done
+Respondent 9 done
+Respondent 10 done
+Respondent 11 done
+Respondent 12 done
+Respondent 13 done
+Respondent 14 done
+Respondent 15 done
+Respondent 16 done
+Respondent 17 done
+Respondent 18 done
+Respondent 19 done
+Respondent 20 done
+Respondent 21 done
+Respondent 22 done
+Respondent 23 done
+Respondent 24 done
+Respondent 25 done
+Respondent 26 done
+Respondent 27 done
+Respondent 28 done
+Respondent 29 done
+Respondent 30 done
+Respondent 31 done
+Respondent 32 done
+Respondent 33 done
+Respondent 34 done
+Respondent 35 done
+Respondent 36 done
+Respondent 37 done
+Respondent 38 done
+Respondent 39 done
+Respondent 40 done
+Respondent 41 done
+Respondent 42 done
+Respondent 43 done
+Respondent 44 done
+Respondent 45 done
+Respondent 46 done
+Respondent 47 done
+Respondent 48 done
+Respondent 49 done
+Respondent 50 done
+Respondent 51 done
+Respondent 52 done
+Respondent 53 done
+Respondent 54 done
+Respondent 55 done
+Respondent 56 done
+Respondent 57 done
+Respondent 58 done
+Respondent 59 done
+Respondent 60 done
+Respondent 61 done
+Respondent 62 done
+Respondent 63 done
+Respondent 64 done
+Respondent 65 done
+Respondent 66 done
+Respondent 67 done
+Respondent 68 done
+Respondent 69 done
+Respondent 70 done
+Respondent 71 done
+Respondent 72 done
+Respondent 73 done
+Respondent 74 done
+Respondent 75 done
+Respondent 76 done
+Respondent 77 done
+Respondent 78 done
+Respondent 79 done
+Respondent 80 done
+Respondent 81 done
+Respondent 82 done
+Respondent 83 done
+Respondent 84 done
+Respondent 85 done
+Respondent 86 done
+Respondent 87 done
+Respondent 88 done
+Respondent 89 done
+Respondent 90 done
+Respondent 91 done
+Respondent 92 done
+Respondent 93 done
+Respondent 94 done
+Respondent 95 done
+Respondent 96 done
+Respondent 97 done
+Respondent 98 done
+Respondent 99 done
+Respondent 100 done
+4502.167 sec elapsed
+# A tibble: 15 x 7
+       caseid respondent issue real_response llm_response match     confidence
+        <dbl>      <int> <chr> <chr>         <chr>        <chr>     <fct>     
+ 1 1636010971         19 321d  Oppose        Oppose       Correct   High      
+ 2 1635989947         17 321b  Oppose        Support      Incorrect High      
+ 3 1636912357         22 321e  Support       Oppose       Incorrect Medium    
+ 4 1645455453         82 321a  Oppose        Support      Incorrect High      
+ 5 1645570361         87 320a  Support       Oppose       Incorrect Medium    
+ 6 1643989851         52 320c  Oppose        Oppose       Correct   High      
+ 7 1633330823          9 320a  Oppose        Oppose       Correct   High      
+ 8 1629319233          4 321c  Support       Oppose       Incorrect High      
+ 9 1644072257         59 321e  Support       Oppose       Incorrect High      
+10 1641946033         48 320a  Support       Oppose       Incorrect Medium    
+11 1637136217         26 321e  Support       Support      Correct   High      
+12 1643989851         52 320d  Oppose        Oppose       Correct   High      
+13 1635282235         16 321a  Oppose        Oppose       Correct   High      
+14 1639880509         42 321b  Oppose        Support      Incorrect High      
+15 1637823943         27 320e  Support       Oppose       Incorrect High      
+Total queries: 1000
+Total input tokens: 163540
+Total output tokens: 181258

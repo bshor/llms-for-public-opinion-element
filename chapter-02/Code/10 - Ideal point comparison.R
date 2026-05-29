@@ -1,6 +1,6 @@
 sink("Output/10-output.txt")
 
-load("Processed/ideal-points.Rdata")  # Loads ideal_points
+load(results_path("ideal-points.Rdata"))  # Loads ideal_points
 
 # Calculate comparison metrics
 comparison <- ideal_points %>%

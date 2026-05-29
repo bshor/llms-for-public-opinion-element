@@ -1,4 +1,4 @@
-# A tibble: 10 × 4
+# A tibble: 10 x 4
    issue llm_support real_support absolute_error
    <chr>       <dbl>        <dbl>          <dbl>
  1 320a         0.51         0.54         0.0300

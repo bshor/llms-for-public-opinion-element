@@ -1,0 +1,32 @@
+setwd("/data/School/Research/LLM-Elements/Chapter-2")
+
+run_script <- function(path) {
+  cat("\n========================================\n")
+  cat("STARTING:", path, "\n")
+  cat("Time:", format(Sys.time()), "\n")
+  cat("========================================\n")
+  source(path, local = FALSE)
+  cat("\n[DONE]:", path, "at", format(Sys.time()), "\n")
+}
+
+run_script("Code/01 - Setup.R")
+cat("Model:", ollama_model, "| run_tag:", run_tag, "\n")
+run_script("Code/02b - Helper functions.R")
+run_script("Code/03c - Local model.R")
+run_script("Code/04 - Individual accuracy.R")
+run_script("Code/04b - Party PRE.R")
+run_script("Code/05 - Aggregate accuracy.R")
+run_script("Code/06 - Confidence filtering.R")
+run_script("Code/07 - Party subgroups.R")
+run_script("Code/07b - Rare profiles.R")
+run_script("Code/07c - Heatmap.R")
+run_script("Code/08a - Regression comparison.R")
+run_script("Code/08b - Regression plot.R")
+run_script("Code/09a - Ideal points.R")
+run_script("Code/09b - Ideal point plot.R")
+run_script("Code/10 - Ideal point comparison.R")
+run_script("Code/11 - Polarization inflation.R")
+
+cat("\n\n========================================\n")
+cat("ALL SCRIPTS COMPLETE at", format(Sys.time()), "\n")
+cat("========================================\n")

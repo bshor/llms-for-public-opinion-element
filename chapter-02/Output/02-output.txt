@@ -4,5 +4,5 @@ Respondent 1: 67yo White Female Democrat
 Real CCES response: Oppose
 LLM opinion: Support
 LLM confidence: Medium
-LLM reasoning: I’d support it. I think having one public program that covers everyone would make health care simpler and more reliable, and it could help people who struggle with high costs or gaps in coverage.
+LLM reasoning: I'd support it. I think having one public program that covers everyone would make health care simpler and more reliable, and it could help people who struggle with high costs or gaps in coverage.
 
