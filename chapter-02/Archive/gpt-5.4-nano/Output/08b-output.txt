@@ -1,4 +1,0 @@
-Plot saved to Plots/08b-regression-comparison.png
-[1] "Party coefficient inflation:"
-  Democrat: 127.5% inflation
-  Republican: 60% inflation

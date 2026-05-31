@@ -1,7 +1,0 @@
-1.648 sec elapsed
-Respondent 1: 67yo White Female Democrat
-
-Real CCES response: Oppose
-LLM opinion: Support
-LLM confidence: Medium
-LLM reasoning: I support expanding Medicare into a single comprehensive public health care program for all Americans, because I think it would make health coverage more affordable and reliable for everyone, reduce the worry of losing coverage, and ensure people aren't denied care due to cost.

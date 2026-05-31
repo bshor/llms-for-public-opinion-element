@@ -4,6 +4,11 @@
 .Rhistory
 .RData
 
+# Python
+__pycache__/
+*.py[cod]
+.env
+
 # LaTeX (manuscript lives in Overleaf, not here)
 *.tex
 *.log
@@ -13,3 +18,9 @@
 PLAN.md
 .Rproj.user
 .positai
+
+# Chapter 2 local-only experiments and pipeline support
+chapter-02/Archive/
+chapter-02/Code/Possible/
+chapter-02/Code/benchmark_local.R
+chapter-02/Code/sanitize_outputs.R

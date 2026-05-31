@@ -106,7 +106,7 @@ messages.append(
 )
 
 raw_response = client.chat.completions.create(
-    model="gpt-5.4-nano",
+    model="gpt-5.4-mini",
     messages=messages,
     response_format=survey_response_schema,
 )
@@ -127,8 +127,19 @@ Explanation: {response["explanation"]}
 # Shared definitions for subsequent scripts
 ###########
 
-# Use local (Ollama) or cloud (OpenAI) results?
-use_local = False
+# Model for this run. Defaults to a cloud (OpenAI) model; the local-model
+# section overrides it with an Ollama model.
+active_model = "gpt-5.4-mini"
+
+# Ollama (local) model names contain a colon; OpenAI (cloud) names do not.
+use_local = ":" in active_model
+
+# Tag for this run's saved files (colons replaced for valid filenames).
+run_tag = active_model.replace(":", "-")
+
+
+def results_path(name):
+    return ROOT / "Processed" / f"{run_tag}-{name}"
 
 # Create output directories
 for folder in ["Output", "Processed", "Plots", "Tables"]:
@@ -186,7 +197,7 @@ messages = [
 
 start_time = time.perf_counter()
 raw_response = client.chat.completions.create(
-    model="gpt-5.4-nano",
+    model=active_model,
     messages=messages,
     response_format=survey_response_schema,
 )
@@ -241,8 +252,7 @@ def calc_pre(real_response, match):
 
 
 def load_combined():
-    filename = "local-combined_results.pkl" if use_local else "cloud-combined_results.pkl"
-    return pd.read_pickle(ROOT / "Processed" / filename)
+    return pd.read_pickle(results_path("combined_results.pkl"))
 
 
 def build_combined(all_results):
@@ -280,7 +290,7 @@ for resp_id in range(1, 11):
             ]
             future = executor.submit(
                 client.chat.completions.create,
-                model="gpt-5.4-nano",
+                model=active_model,
                 messages=messages,
                 response_format=survey_response_schema,
             )
@@ -302,7 +312,7 @@ for resp_id in range(1, 11):
 elapsed = time.perf_counter() - start_time
 elapsed
 
-with open(ROOT / "Processed" / "cloud-all_results.pkl", "wb") as f:
+with open(results_path("all_results.pkl"), "wb") as f:
     pickle.dump(all_results, f)
 
 combined_results = pd.concat(list(all_results.values()), ignore_index=True)
@@ -327,8 +337,12 @@ Total cost: ${round(combined_results["cost"].sum(skipna=True), 2)}
 
 n_target = 100
 
-with open(ROOT / "Processed" / "cloud-all_results.pkl", "rb") as f:
-    all_results = pickle.load(f)
+all_results_path = results_path("all_results.pkl")
+if all_results_path.exists():
+    with open(all_results_path, "rb") as f:
+        all_results = pickle.load(f)
+else:
+    all_results = {}
 
 existing_ids = sorted(all_results.keys())
 missing_ids = [x for x in range(1, n_target + 1) if x not in existing_ids]
@@ -354,7 +368,7 @@ for resp_id in missing_ids:
             ]
             future = executor.submit(
                 client.chat.completions.create,
-                model="gpt-5.4-nano",
+                model=active_model,
                 messages=messages,
                 response_format=survey_response_schema,
             )
@@ -376,13 +390,13 @@ for resp_id in missing_ids:
 elapsed = time.perf_counter() - start_time
 elapsed
 
-with open(ROOT / "Processed" / "cloud-all_results.pkl", "wb") as f:
+with open(all_results_path, "wb") as f:
     pickle.dump(all_results, f)
 
 combined_results = build_combined(all_results)
 
-combined_results.to_pickle(ROOT / "Processed" / "cloud-combined_results.pkl")
-combined_results.to_csv(ROOT / "Processed" / "cloud-combined_results.csv", index=False)
+combined_results.to_pickle(results_path("combined_results.pkl"))
+combined_results.to_csv(results_path("combined_results.csv"), index=False)
 
 combined_results[
     ["caseid", "respondent", "issue", "real_response", "llm_response", "match", "confidence"]
@@ -402,10 +416,12 @@ Total cost: ${round(combined_results["cost"].sum(skipna=True), 2)}
 # 03c - Optional local model via Ollama
 ###########
 
-ollama_model = "granite3.2:8b-instruct-q4_K_M"
+active_model = "llama3.1:8b-instruct-q4_K_M"
+use_local = ":" in active_model
+run_tag = active_model.replace(":", "-")
 n_target = 100
 
-local_results_path = ROOT / "Processed" / "local-all_results.pkl"
+local_results_path = results_path("all_results.pkl")
 if local_results_path.exists():
     with open(local_results_path, "rb") as f:
         all_results = pickle.load(f)
@@ -415,7 +431,7 @@ else:
 existing_ids = sorted(all_results.keys())
 missing_ids = [x for x in range(1, n_target + 1) if x not in existing_ids]
 
-print("Model:", ollama_model)
+print("Model:", active_model)
 print("Found:", len(existing_ids), "existing,", len(missing_ids), "to query")
 
 start_time = time.perf_counter()
@@ -434,7 +450,7 @@ for resp_id in missing_ids:
                 requests.post,
                 "http://localhost:11434/api/chat",
                 json={
-                    "model": ollama_model,
+                    "model": active_model,
                     "messages": [
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": prompt},
@@ -467,8 +483,8 @@ elapsed
 
 combined_results = build_combined(all_results)
 
-combined_results.to_pickle(ROOT / "Processed" / "local-combined_results.pkl")
-combined_results.to_csv(ROOT / "Processed" / "local-combined_results.csv", index=False)
+combined_results.to_pickle(results_path("combined_results.pkl"))
+combined_results.to_csv(results_path("combined_results.csv"), index=False)
 
 combined_results[
     ["caseid", "respondent", "issue", "real_response", "llm_response", "match", "confidence"]
@@ -815,15 +831,15 @@ for issue_index in range(n_issues):
 
 all_coefs = pd.DataFrame(all_coefs)
 
-all_coefs.to_pickle(ROOT / "Processed" / "regression-coefs.pkl")
-all_coefs.to_csv(ROOT / "Processed" / "regression-coefs.csv", index=False)
+all_coefs.to_pickle(results_path("regression-coefs.pkl"))
+all_coefs.to_csv(results_path("regression-coefs.csv"), index=False)
 
 
 ###########
 # 08b - Plot coefficient comparison
 ###########
 
-all_coefs = pd.read_pickle(ROOT / "Processed" / "regression-coefs.pkl")
+all_coefs = pd.read_pickle(results_path("regression-coefs.pkl"))
 
 plot_data = all_coefs.copy()
 plot_data["term"] = plot_data["term"].replace({"College_Grad": "College+"})
@@ -895,15 +911,15 @@ party_medians_check = ideal_points.groupby("party")["ideal_point"].median()
 if party_medians_check.get("Republican", 0) < party_medians_check.get("Democrat", 0):
     ideal_points["ideal_point"] = -ideal_points["ideal_point"]
 
-ideal_points.to_pickle(ROOT / "Processed" / "ideal-points.pkl")
-ideal_points.to_csv(ROOT / "Processed" / "ideal-points.csv", index=False)
+ideal_points.to_pickle(results_path("ideal-points.pkl"))
+ideal_points.to_csv(results_path("ideal-points.csv"), index=False)
 
 
 ###########
 # 09b - Visualize ideal point distributions
 ###########
 
-ideal_points = pd.read_pickle(ROOT / "Processed" / "ideal-points.pkl")
+ideal_points = pd.read_pickle(results_path("ideal-points.pkl"))
 
 ideal_plot = ideal_points[ideal_points["party"].isin(["Democrat", "Republican"])].copy()
 ideal_plot["source"] = ideal_plot["source"].replace({"human": "Human (CCES)", "llm": "LLM"})
@@ -927,7 +943,7 @@ g.figure.savefig(ROOT / "Plots" / "09-ideal-points.png", dpi=300)
 # 10 - Ideal point comparison
 ###########
 
-ideal_points = pd.read_pickle(ROOT / "Processed" / "ideal-points.pkl")
+ideal_points = pd.read_pickle(results_path("ideal-points.pkl"))
 
 comparison = (
     ideal_points.pivot_table(index="caseid", columns="source", values="ideal_point")
@@ -998,7 +1014,7 @@ fig.savefig(ROOT / "Plots" / "10-ideal-point-comparison.png", dpi=300)
 # 11 - Polarization
 ###########
 
-ideal_points = pd.read_pickle(ROOT / "Processed" / "ideal-points.pkl")
+ideal_points = pd.read_pickle(results_path("ideal-points.pkl"))
 
 party_medians = (
     ideal_points[ideal_points["party"].isin(["Democrat", "Republican", "Independent"])]
@@ -1037,3 +1053,117 @@ polarization_inflation = polarization_inflation.reset_index(drop=True)
 
 polarization_inflation.to_csv(ROOT / "Tables" / "polarization-inflation.csv", index=False)
 polarization_inflation
+
+
+###########
+# 12 - Compare saved model runs
+###########
+
+combined_files = sorted((ROOT / "Processed").glob("*-combined_results.pkl"))
+
+model_results = []
+for path in combined_files:
+    model = path.name.removesuffix("-combined_results.pkl")
+    result = pd.read_pickle(path).copy()
+    result["model"] = model
+    model_results.append(result)
+
+if model_results:
+    all_model_results = pd.concat(model_results, ignore_index=True)
+    print("Models found:", ", ".join(all_model_results["model"].unique()))
+
+    overall_summary = (
+        all_model_results.groupby("model")
+        .apply(
+            lambda x: pd.Series(
+                {
+                    "n": len(x),
+                    "accuracy": round((x["match"] == "Correct").mean(), 3),
+                    "pre": round(calc_pre(x["real_response"], x["match"]), 3),
+                }
+            )
+        )
+        .reset_index()
+    )
+    print("\n=== Overall accuracy and PRE ===")
+    print(overall_summary.to_string(index=False))
+
+    issue_summary = (
+        all_model_results.groupby(["model", "issue"])
+        .apply(lambda x: round(calc_pre(x["real_response"], x["match"]), 3))
+        .rename("pre")
+        .reset_index()
+        .sort_values(["issue", "model"])
+    )
+    print("\n=== PRE by issue ===")
+    print(issue_summary.to_string(index=False))
+
+    party_summary = (
+        all_model_results.groupby(["model", "pid_text"])
+        .apply(
+            lambda x: pd.Series(
+                {
+                    "accuracy": round((x["match"] == "Correct").mean(), 3),
+                    "pre": round(calc_pre(x["real_response"], x["match"]), 3),
+                }
+            )
+        )
+        .reset_index()
+    )
+    print("\n=== Accuracy and PRE by party ===")
+    print(party_summary.sort_values(["pid_text", "model"]).to_string(index=False))
+
+ideal_files = sorted((ROOT / "Processed").glob("*-ideal-points.pkl"))
+if ideal_files:
+    ideal_summaries = []
+    polarization_distances = []
+    for path in ideal_files:
+        model = path.name.removesuffix("-ideal-points.pkl")
+        points = pd.read_pickle(path)
+
+        median_points = (
+            points.groupby(["source", "party"])["ideal_point"]
+            .median()
+            .round(3)
+            .rename("median_ip")
+            .reset_index()
+        )
+        median_points["model"] = model
+        ideal_summaries.append(median_points)
+
+        distances = (
+            points[points["party"].isin(["Democrat", "Republican"])]
+            .groupby(["source", "party"])["ideal_point"]
+            .median()
+            .unstack()
+            .reset_index()
+        )
+        distances["distance"] = (distances["Republican"] - distances["Democrat"]).round(3)
+        distances["model"] = model
+        polarization_distances.append(distances[["source", "distance", "model"]])
+
+    print("\n=== Polarization inflation (median ideal points by party) ===")
+    print(pd.concat(ideal_summaries).sort_values(["source", "party", "model"]).to_string(index=False))
+
+    print("\n=== Polarization distance (Republican - Democrat median) ===")
+    print(pd.concat(polarization_distances).sort_values(["source", "model"]).to_string(index=False))
+
+coef_files = sorted((ROOT / "Processed").glob("*-regression-coefs.pkl"))
+if coef_files:
+    coef_summaries = []
+    for path in coef_files:
+        model = path.name.removesuffix("-regression-coefs.pkl")
+        coefs = pd.read_pickle(path)
+        summary = (
+            coefs[coefs["term"].isin(["Democrat", "Republican"])]
+            .groupby(["source", "term"])["estimate"]
+            .mean()
+            .round(3)
+            .rename("mean_estimate")
+            .reset_index()
+        )
+        summary["model"] = model
+        coef_summaries.append(summary)
+
+    print("\n=== Partisan regression coefficients ===")
+    print(pd.concat(coef_summaries).sort_values(["source", "term", "model"]).to_string(index=False))

@@ -1,17 +1,0 @@
-wrote 1.00TB in  0s, 246.72PB/s                                                                                         # A tibble: 1 × 6
-      n e_majority e_party e_model   pre party_pre
-  <int>      <int>   <int>   <int> <dbl>     <dbl>
-1  1000        460     303     338 0.265    -0.116
-# A tibble: 10 × 4
-   issue e_party e_model party_pre
-   <chr>   <int>   <int>     <dbl>
- 1 321b       28      27    0.0357
- 2 320d       31      30    0.0323
- 3 320c       37      37    0     
- 4 321a       28      28    0     
- 5 321e       24      25   -0.0417
- 6 321d       18      19   -0.0556
- 7 320a       33      35   -0.0606
- 8 320e       36      45   -0.25  
- 9 320b       37      48   -0.297 
-10 321c       31      44   -0.419 
