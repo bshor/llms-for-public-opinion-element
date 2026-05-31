@@ -8,6 +8,7 @@
 __pycache__/
 *.py[cod]
 .env
+.gitkeep
 
 # LaTeX (manuscript lives in Overleaf, not here)
 *.tex
