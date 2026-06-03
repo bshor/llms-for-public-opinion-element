@@ -43,6 +43,7 @@ folder:
 - `chapter-01/Code/Chapter 1 (Python Translation).py`
 - `chapter-02/Code/Chapter 2 (Python Translation).py`
 - `chapter-03/Code/Chapter 3a (Python Translation).py`
+- `chapter-03/Code/app (Python Translation).py`
 - `chapter-04/Code/Chapter 4 (Python Translation).py`
 
 ### Chapter 1 — LLMs: Foundations
