@@ -8,6 +8,7 @@ library(future)
 library(future.apply)
 library(igraph)
 library(ggraph)
+library(openai)
 
 # Load the dataset ----
 tariff_data_sample <- read_csv("Data/tariff_data_sample.csv")
