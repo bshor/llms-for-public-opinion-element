@@ -5,9 +5,9 @@ author_prompt <- "You are an expert storyteller with a sly sense of humor.
                   Continue the first paragraph of that story."
 user_prompt <- "It was a dark and stormy "
 
-## GPT-5 class models are reasoning models and do not support temperature.
-## Use a non-reasoning GPT-4 class model for this temperature example.
-temperature_model <- "gpt-4.1-mini"
+## gpt-5.4-mini is a non-reasoning model that supports temperature control.
+## (Full reasoning models, such as GPT-5.5, do not expose temperature directly.)
+temperature_model <- "gpt-5.4-mini"
 
 ## Helper to run the same prompt at a given temperature ----
 run_temp <- function(t) {

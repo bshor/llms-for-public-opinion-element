@@ -220,7 +220,7 @@ tariff_prompt = "\n".join(
 
 def annotate_tariff_response(text):
     raw_response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5.4-mini",
         temperature=0,
         messages=[
             {"role": "system", "content": chat_system_prompt},
@@ -239,7 +239,7 @@ tariff_prompts = [
 tariff_labels = []
 for prompt in tariff_prompts:
     raw_response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5.4-mini",
         temperature=0,
         messages=[
             {"role": "system", "content": chat_system_prompt},
@@ -734,7 +734,7 @@ def annotate_tariff_response_rag(text):
     rag_prompt = build_rag_prompt(text, examples)
 
     raw_response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5.4-mini",
         temperature=0,
         messages=[
             {"role": "system", "content": rag_chat_system_prompt},

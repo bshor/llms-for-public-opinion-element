@@ -2,7 +2,7 @@
 
 chat <- chat_openai(
   system_prompt = "You are a professional research assistant coding survey responses about tariffs.",
-  model = "gpt-4o",
+  model = "gpt-5.4-mini",
   params = params(temperature = 0),
   echo = "none"
 )

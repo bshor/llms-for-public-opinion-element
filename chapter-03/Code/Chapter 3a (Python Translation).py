@@ -38,7 +38,7 @@ client = OpenAI()
 ###########
 
 
-def ask_next_question(interview_to_time):
+def ask_basic_next_question(interview_to_time):
     interviewer_prompt = (
         "You are an expert qualitative interviewer. You are conducting an interview with an American voter. "
         "Ask follow-up questions to develop a fuller understanding of why the respondent thinks tariffs are good or bad "
@@ -93,10 +93,10 @@ def ask_next_question(interview_to_time):
 ###########
 
 
-def interview_function():
+def interview_function(next_question_function=ask_basic_next_question):
     interview_question = (
-        "Overall, do you think increasing tariffs or fees on goods importaed from trading partners "
-        "will be good of bad for the United States?\n"
+        "Overall, do you think increasing tariffs or fees on goods imported from trading partners "
+        "will be good or bad for the United States?\n"
         "Do you think they are: \nVery good, \nGood, \nNeither good nor bad, \nBad, \nVery bad?\n"
     )
 
@@ -104,7 +104,7 @@ def interview_function():
 
     user_response = input("Type your answer here: ")
 
-    interview = ask_next_question(
+    interview = next_question_function(
         "Interviewer: " + interview_question + "<br>" + "Respondent: " + user_response + "<br>"
     )
 
@@ -116,7 +116,9 @@ def interview_function():
 # Run the interview function and save the chat
 ###########
 
-interview_data = interview_function()
+interview_data = interview_function(
+    next_question_function=ask_basic_next_question
+)
 
 
 ###########
@@ -129,7 +131,7 @@ interview_data = interview_function()
 ###########
 
 
-def ask_next_question(interview_to_time):
+def ask_checked_next_question(interview_to_time):
     interviewer_prompt = (
         "You are an expert qualitative interviewer. You are conducting an interview with an American voter. "
         "Ask follow-up questions to develop a fuller understanding of why the respondent thinks tariffs are good or bad "
@@ -226,4 +228,6 @@ def ask_next_question(interview_to_time):
     return interview_to_time
 
 
-interview_text = interview_function()
+interview_text = interview_function(
+    next_question_function=ask_checked_next_question
+)

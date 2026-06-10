@@ -6,10 +6,10 @@ answer_checker_prompt <- paste(
   "Return 'no' if it is non-serious or off-topic."
 )
 
-ask_next_question <- function(interview_to_time,
-                              max_questions = 3,
-                              model = interviewer_model,
-                              checker_model = answer_checker_model) {
+ask_checked_next_question <- function(interview_to_time,
+                                      max_questions = 3,
+                                      model = interviewer_model,
+                                      checker_model = answer_checker_model) {
   ## Set up interviewer and answer checker prompts ----
   interviewer <- chat_openai(model = model,
                              system_prompt = tariff_interviewer_prompt)

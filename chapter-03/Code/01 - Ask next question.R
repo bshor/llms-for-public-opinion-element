@@ -23,9 +23,9 @@ split_transcript <- function(transcript) {
   strsplit(transcript, "<br>", fixed = TRUE)[[1]]
 }
 
-ask_next_question <- function(interview_to_time,
-                              max_questions = 3,
-                              model = interviewer_model) {
+ask_basic_next_question <- function(interview_to_time,
+                                    max_questions = 3,
+                                    model = interviewer_model) {
   interviewer <- chat_openai(model = model,
                              system_prompt = tariff_interviewer_prompt)
   ## Generate follow-up question ----

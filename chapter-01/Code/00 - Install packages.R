@@ -8,7 +8,7 @@ install.packages(c("glue", "tictoc", "broom", "pscl"))
 install.packages(c("shiny", "shinyjs", "shinychat", "bslib"))
 
 # Additional packages used in Chapter 4
-install.packages(c("devtools", "future", "future.apply", "igraph", "ggraph"))
+install.packages(c("pak", "igraph", "ggraph", "openai"))
 
-# dsl package for Chapter 4 (devtools necessary for install)
-install_github("naoki-egami/dsl", dependencies = TRUE)
+# dsl package for Chapter 4 (installed from GitHub)
+pak::pak("naoki-egami/dsl")

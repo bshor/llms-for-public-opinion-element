@@ -18,10 +18,12 @@ power_out <- power_dsl(
   data = comparison_data_plot
 )
 
-p_power <- plot(power_out, coef_name = "human_tariff_position_num")
+# Plot standard error vs. size of labeled data ----
+p_power <- tibble(size = power_out$labeled_size,
+                  se = power_out$predicted_se[, "human_tariff_position_num"]) %>%
+  distinct() %>% arrange(size) %>%
+  ggplot(aes(size, se)) + geom_line(color = "grey50") + geom_point(size = 2) +
+  geom_point(data = ~ filter(.x, size == 100), shape = 15, size = 3.5) +
+  labs(x = "Size of Labeled Data", y = "Standard Error") + theme_minimal()
 
-p_power
-
-png("Plots/p_power.png", width = 7, height = 5, units = "in", res = 300)
-plot(power_out, coef_name = "human_tariff_position_num")
-dev.off()
+ggsave("Plots/p_power.png", p_power, width = 7, height = 5, dpi = 300)
